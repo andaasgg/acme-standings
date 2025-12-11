@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>{{ event.name }}</h2>
+
+<p>
+  <strong>Date:</strong> {{ event.event_date }}<br />
+  {% if event.start_time %}
+  <strong>Start time:</strong> {{ event.start_time }}<br />
+  {% endif %}
+  {% if event.location %}
+  <strong>Location:</strong> {{ event.location }}<br />
+  {% endif %}
+  {% if event.format %}
+  <strong>Format:</strong> {{ event.format }}<br />
+  {% endif %}
+  {% if event.registration_url %}
+  <strong>Registration:</strong>
+  <a href="{{ event.registration_url }}" target="_blank">
+    {{ event.registration_url }}
+  </a>
+  <br />
+  {% endif %}
+</p>
+
+{% if event.description %}
+<h3>Details</h3>
+<p>{{ event.description }}</p>
+{% endif %}
+
+{% if results and results|length > 0 %}
+<h3>Results</h3>
+<table>
+  <thead>
+    <tr>
+      <th>Position</th>
+      <th>Player</th>
+      <th>Points</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for result in results %}
+    <tr>
+      <td>{{ result.position }}</td>
+      <td>{{ result.player.name }}</td>
+      <td>{{ result.points }}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% else %}
+<p><em>No results recorded yet.</em></p>
+{% endif %}
+
+<p style="margin-top: 1rem;">
+  <a href="/events">&larr; Back to events</a>
+</p>
+{% endblock %}

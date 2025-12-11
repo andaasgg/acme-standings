@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Create Event</h2>
+
+<form action="/admin/events/new" method="post">
+  <div>
+    <label>Event Name</label><br />
+    <input type="text" name="name" required />
+  </div>
+
+  <div>
+    <label>Event Date</label><br />
+    <input type="date" name="event_date" required />
+  </div>
+
+  <div>
+    <label>Start Time</label><br />
+    <input type="text" name="start_time" placeholder="7:00 PM" />
+  </div>
+
+  <div>
+    <label>Location</label><br />
+    <input type="text" name="location" placeholder="Free Play Richardson" />
+  </div>
+
+  <div>
+    <label>Format</label><br />
+    <input type="text" name="format" placeholder="3-strike, Match Play" />
+  </div>
+
+  <div>
+    <label>Registration URL</label><br />
+    <input type="url" name="registration_url" placeholder="https://..." />
+  </div>
+
+  <div>
+    <label>Description</label><br />
+    <textarea name="description" rows="4" cols="40"></textarea>
+  </div>
+
+  <div style="margin-top: 1rem;">
+    <button type="submit" class="btn">Create Event</button>
+  </div>
+</form>
+{% endblock %}

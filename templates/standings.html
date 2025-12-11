@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Current Standings</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Player</th>
+      <th>Points</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for name, total_points in standings %}
+    <tr>
+      <td>{{ loop.index }}</td>
+      <td>{{ name }}</td>
+      <td>{{ total_points or 0 }}</td>
+    </tr>
+    {% else %}
+    <tr>
+      <td colspan="3">No results yet.</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

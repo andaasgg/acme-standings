@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Upload Event Results</h2>
+
+<p>Upload a CSV file for a single event. Format:</p>
+<pre>
+player,position
+Alice,1
+Bob,2
+</pre>
+
+<form action="/admin/upload" method="post" enctype="multipart/form-data">
+  <div>
+    <label>Event Name</label><br />
+    <input type="text" name="event_name" required />
+  </div>
+  <div>
+    <label>Event Date (YYYY-MM-DD)</label><br />
+    <input type="date" name="event_date" required />
+  </div>
+  <div>
+    <label>Results CSV</label><br />
+    <input type="file" name="file" accept=".csv" required />
+  </div>
+  <div style="margin-top: 1rem;">
+    <button type="submit" class="btn">Upload</button>
+  </div>
+</form>
+{% endblock %}
